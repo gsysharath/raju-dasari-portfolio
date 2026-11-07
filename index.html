@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raju — Choose a Direction</title>
+  <meta name="description" content="Two portfolio directions for Raju, graphic and motion designer. Pick one to finalise.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='32' height='64' fill='%230a0a0b'/%3E%3Crect x='32' width='32' height='64' fill='%23efe9dd'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23ff4a1c'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root { --ease: cubic-bezier(.19, 1, .22, 1); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #0a0a0b; }
+    body { display: flex; overflow: hidden; font-family: system-ui, sans-serif; }
+    .side { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(20px, 3vw, 44px); overflow: hidden; text-decoration: none; transition: flex-grow .9s var(--ease); }
+    .side:hover, .side:focus-visible { flex-grow: 1.6; outline: none; }
+    .lab { background: #0a0a0b; color: #ecebe6; }
+    .ed { background: #efe9dd; color: #16130f; }
+    .tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; display: flex; justify-content: space-between; gap: 12px; }
+    .lab .tag b { color: #d4ff3a; font-weight: 400; }
+    .ed .tag b { color: #ff4a1c; font-weight: 400; }
+    .name { line-height: .8; white-space: nowrap; transition: transform 1s var(--ease), font-variation-settings 1s var(--ease); }
+    .lab .name { font-family: "Archivo", sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(80px, 16vw, 300px); letter-spacing: -.03em; font-variation-settings: "wdth" 62; }
+    .lab:hover .name { font-variation-settings: "wdth" 125; }
+    .ed .name { font-family: "Fraunces", serif; font-size: clamp(90px, 17vw, 320px); font-variation-settings: "opsz" 144, "wght" 300, "SOFT" 100, "WONK" 1; }
+    .ed:hover .name { font-variation-settings: "opsz" 144, "wght" 700, "SOFT" 0, "WONK" 1; font-style: italic; }
+    .desc { max-width: 40ch; font-size: 15px; line-height: 1.5; opacity: .8; }
+    .ed .desc { font-family: "Fraunces", serif; font-size: 18px; font-variation-settings: "opsz" 24, "SOFT" 100; }
+    ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; max-width: 520px; }
+    li { padding: 6px 12px; border-radius: 99px; font-size: 12px; border: 1px solid currentColor; opacity: .7; }
+    .go { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 14px 24px; border-radius: 99px; font-size: 14px; font-weight: 600; }
+    .lab .go { background: #d4ff3a; color: #0a0a0b; font-family: "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; }
+    .ed .go { background: #16130f; color: #efe9dd; }
+    .go span { transition: transform .6s var(--ease); }
+    .side:hover .go span { transform: translateX(6px); }
+    .mid { position: absolute; z-index: 5; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; border-radius: 50%; background: #ff4a1c; color: #16130f; display: grid; place-items: center; text-align: center; font-family: "Fraunces", serif; font-style: italic; font-size: 17px; line-height: 1.1; pointer-events: none; transition: left .9s var(--ease); }
+    body:has(.lab:hover) .mid { left: 61.5%; }
+    body:has(.ed:hover) .mid { left: 38.5%; }
+    @media (max-width: 760px) {
+      body { flex-direction: column; overflow: auto; height: auto; }
+      .side { min-height: 50svh; flex: none; }
+      .side:hover { flex-grow: 0; }
+      .mid { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="side lab" href="lab.html">
+    <div class="tag"><span><b>A</b> — Direction one</span><span>Dark · specimen · acid</span></div>
+    <div>
+      <div class="name">Lab</div>
+      <p class="desc">A dark, scientific-specimen concept. Variable-width type that stretches as you scroll, scrambling readouts, a horizontal work gallery, a 3D flip-book magazine and autoplaying reel grid.</p>
+      <ul><li>Counter + slideshow preloader</li><li>Cursor-reactive name</li><li>Pinned horizontal gallery</li><li>Zoom-through print reveal</li><li>Scroll flip-book</li><li>Filterable reels</li></ul>
+      <span class="go">View the Lab <span>→</span></span>
+    </div>
+  </a>
+  <a class="side ed" href="editorial.html">
+    <div class="tag"><span><b>B</b> — Direction two</span><span>Paper · editorial · colour</span></div>
+    <div>
+      <div class="name">Editorial</div>
+      <p class="desc">The portfolio as a printed magazine issue. Serif type that changes weight and softness, pages that change colour as you read, stacking project stories and a 3D ring of reels.</p>
+      <ul><li>Card-dealing preloader</li><li>Contents with hover previews</li><li>Stacking project cards</li><li>Phone carousel on scroll</li><li>Magazine fan & rising standees</li><li>3D motion ring</li></ul>
+      <span class="go">Read the issue <span>→</span></span>
+    </div>
+  </a>
+  <div class="mid">Pick<br>one</div>
+</body>
+</html>

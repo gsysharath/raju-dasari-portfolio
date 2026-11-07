@@ -1,0 +1,34 @@
+/* Shared lightbox. Each version sets these variables on :root:
+   --lb-bg, --lb-fg, --lb-muted, --lb-accent, --lb-font, --lb-mono */
+.lb { position: fixed; inset: 0; z-index: 9000; display: none; color: var(--lb-fg, #fff); font-family: var(--lb-font, system-ui, sans-serif); }
+.lb.is-open { display: block; }
+.lb__backdrop { position: absolute; inset: 0; background: var(--lb-bg, #0b0b0c); }
+.lb__chrome { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 24px; padding: 20px clamp(16px, 3vw, 40px); z-index: 2; }
+.lb__meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.lb__client { font-family: var(--lb-mono, ui-monospace, monospace); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--lb-accent, #d4ff3a); }
+.lb__title { font-size: clamp(15px, 1.4vw, 20px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lb__count { font-family: var(--lb-mono, ui-monospace, monospace); font-size: 12px; letter-spacing: .1em; color: var(--lb-muted, #888); }
+.lb__close { all: unset; cursor: pointer; font-family: var(--lb-mono, ui-monospace, monospace); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; padding: 10px 16px; border: 1px solid currentColor; border-radius: 99px; transition: background .3s, color .3s; }
+.lb__close:hover, .lb__close:focus-visible { background: var(--lb-fg, #fff); color: var(--lb-bg, #000); }
+.lb__close span { margin-left: 6px; }
+.lb__stage { position: absolute; inset: 76px clamp(16px, 6vw, 96px) 24px; display: grid; place-items: center; z-index: 1; }
+.lb--multi .lb__stage { bottom: 110px; }
+.lb__media { max-width: 100%; max-height: 100%; width: auto; height: auto; aspect-ratio: var(--ar); object-fit: contain; display: block; box-shadow: 0 30px 80px -20px rgba(0,0,0,.5); background: #111; }
+video.lb__media { width: min(100%, calc((100vh - 120px) * var(--ar))); height: auto; }
+.lb__nav { all: unset; position: absolute; top: 50%; z-index: 3; width: 56px; height: 56px; margin-top: -28px; display: none; place-items: center; border-radius: 50%; border: 1px solid var(--lb-muted, #666); cursor: pointer; font-size: 20px; transition: background .3s, color .3s, border-color .3s; }
+.lb--multi .lb__nav { display: grid; }
+.lb__nav:hover, .lb__nav:focus-visible { background: var(--lb-accent, #d4ff3a); color: var(--lb-bg, #000); border-color: var(--lb-accent, #d4ff3a); }
+.lb__nav--prev { left: clamp(8px, 2vw, 24px); }
+.lb__nav--next { right: clamp(8px, 2vw, 24px); }
+.lb__strip { position: absolute; left: 0; right: 0; bottom: 16px; height: 78px; display: none; gap: 8px; justify-content: safe center; overflow-x: auto; padding: 0 16px; z-index: 2; scrollbar-width: none; }
+.lb--multi .lb__strip { display: flex; }
+.lb__strip button { all: unset; flex: none; height: 100%; cursor: pointer; opacity: .4; transition: opacity .3s, transform .3s; outline-offset: 2px; }
+.lb__strip button img { height: 100%; width: auto; display: block; }
+.lb__strip button.is-active { opacity: 1; transform: translateY(-4px); outline: 2px solid var(--lb-accent, #d4ff3a); }
+.lb__strip button:hover { opacity: .85; }
+html.lb-lock, html.lb-lock body { overflow: hidden; }
+@media (max-width: 640px) {
+  .lb__nav { top: auto; bottom: 120px; width: 44px; height: 44px; }
+  .lb__stage { inset: 72px 12px 20px; }
+  .lb--multi .lb__stage { bottom: 180px; }
+}
